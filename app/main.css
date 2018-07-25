@@ -1,3 +1,4 @@
+@import "./bootstrap.min.css";
 html {
     box-sizing: border-box;
     -ms-text-size-adjust: 100%;
@@ -58,4 +59,7 @@ html {
     display: inline-block;
     vertical-align: top;
     outline-style: none;
+  }
+  .home {
+    padding: 20px;
   }
