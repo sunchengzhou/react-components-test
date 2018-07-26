@@ -6,17 +6,41 @@ class Home extends Component{
         this.state = {
             value: 0
         }
+        this.oddAdd = this.oddAdd.bind(this);
+        this.reAdd = this.reAdd.bind(this);
+    }
+    oddAdd() {
+      const { store } = this.props;
+      const value = store.getState().toString();
+      if(value%2 == 0) {
+        store.dispatch({
+          type:'ADD'
+        })
+      }
+    }
+    reAdd() {
+      const { store } = this.props;
+      setTimeout(() => {
+        store.dispatch({
+          type:'ADD'
+        })
+      },2000)
     }
     render(){
-        const { value,onadd,onreduce,store } = this.props;
-        console.log(store.getState())
+        const { value,onadd,onreduce } = this.props;
      return  (
-         <p className="container home">
+         <div className="container home">
              
              <button className="btn btn-primary" onClick={onadd}>+</button>
              <span>点击次数： {value} 次</span> 
              <button className="btn btn-primary" onClick={onreduce}>-</button>
-         </p>
+             <p>
+               <button className="btn btn-primary" onClick={this.oddAdd}>偶数增加</button>
+             </p>
+             <p>
+             <button className="btn btn-primary" onClick={this.reAdd}>延迟增加</button>
+             </p>
+         </div>
      )
     }
 }
