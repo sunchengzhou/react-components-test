@@ -30,24 +30,12 @@ module.exports={
                     fallback:"style-loader",
                     use:["css-loader","postcss-loader"]
                 })
-                // use: [
-                //     {
-                //         loader: "style-loader"
-                //     }, {
-                //         loader: "css-loader",
-                //         options:{
-                //             module:true
-                //         }
-                //     },{
-                //         loader:"postcss-loader"
-                //     }
-                // ]
             }         
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template:__dirname+"/app/index.tmpl.html"
+            template:__dirname+"/app/main.html"
         }),
         // new webpack.HotModuleReplacementPlugin(),
         // new webpack.optimize.OccurrenceOrderPlugin(),

@@ -1,45 +1,27 @@
 'use strict'
 import React,{Component} from "react";
+import { store } from '../main';
 class Home extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            value: 0
+          data:store.getState()
         }
-        this.oddAdd = this.oddAdd.bind(this);
-        this.reAdd = this.reAdd.bind(this);
     }
-    oddAdd() {
-      const { store } = this.props;
-      const value = store.getState().toString();
-      if(value%2 == 0) {
-        store.dispatch({
-          type:'ADD'
-        })
-      }
+    componentDidMount() {
+      this.initData();
     }
-    reAdd() {
-      const { store } = this.props;
-      setTimeout(() => {
-        store.dispatch({
-          type:'ADD'
-        })
-      },2000)
+    initData() {
+      store.dispatch({type:'INITIAL'})
     }
     render(){
-        const { value,onadd,onreduce } = this.props;
+      console.log(this.state)
+      const [ name, charm, money ] = this.state[0]
      return  (
          <div className="container home">
-             
-             <button className="btn btn-primary" onClick={onadd}>+</button>
-             <span>点击次数： {value} 次</span> 
-             <button className="btn btn-primary" onClick={onreduce}>-</button>
-             <p>
-               <button className="btn btn-primary" onClick={this.oddAdd}>偶数增加</button>
-             </p>
-             <p>
-             <button className="btn btn-primary" onClick={this.reAdd}>延迟增加</button>
-             </p>
+            姓名：{ name }
+            职位：{ charm }
+            金钱：{ money }
          </div>
      )
     }

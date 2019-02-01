@@ -1,7 +1,7 @@
-export default (state= 0, action) => {
+import { user } from '../dataBase/data'
+export default (state= [], action) => {
   switch(action.type) {
-    case 'ADD': return state + 1;
-    case 'REDUCE': return state -1;
+    case 'INITIAL': return state.push(user)
     default : return state;
   }
 }
