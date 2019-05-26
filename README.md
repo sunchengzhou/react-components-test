@@ -1,16 +1,23 @@
 # webpack React demo
 
 
-**项目运行**
+### react context
+
+> 不必向组建中层层传递props   context就是全局变量类似的性质
+
+> 语法稍微麻烦   影响了组件的重复可用性（独立组件不要用，有业务关联的子组件适用）
+
+
+**api**
 ```javascript
-$ git clone https://github.com/tsrot/react-zhihu.git
-$ cnpm install  //安装依赖文件
-$ npm run build   //文件打包
-$ npm run start   //实时刷新
+// 官方示例
+const MyContext = React.createContext(defaultValue);
+
+<MyContext.Provider value={/* some value */}>
+
+<MyContext.Consumer>
+  {value => /* render something based on the context value */}
+</MyContext.Consumer>
 
 ```
-### 说明  description
-> 本分支仅提供最简单的react骨架 方便测试react新特性等
-
-> This branch only provides the simplest react skeleton for testing new react features
 
